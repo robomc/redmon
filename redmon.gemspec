@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency "i18n"
   s.add_dependency "haml"
   s.add_dependency "rack"
-  s.add_dependency "thin"
+  s.add_dependency "mongrel"
   s.add_dependency "activesupport"
   s.add_dependency "mixlib-cli"
 

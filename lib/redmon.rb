@@ -1,9 +1,10 @@
+require 'rubygems'
 require 'active_support/core_ext'
 require 'eventmachine'
 require 'haml'
 require 'redis'
 require 'sinatra/base'
-require 'thin'
+require 'mongrel'
 
 module Redmon
   extend self
@@ -36,8 +37,7 @@ module Redmon
   end
 
   def start_app
-    app = Redmon::App.new
-    Thin::Server.start(*opts[:web_interface], app)
+    Redmon::App.run!
     log "listening on http##{opts[:web_interface].join(':')}"
   rescue Exception => e
     log "Can't start Redmon::App. port in use?  Error #{e}"
