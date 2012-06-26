@@ -37,6 +37,7 @@ module Redmon
   end
 
   def start_app
+    Redmon::App.set :port, @opts[:web_interface][1]
     Redmon::App.run!
     log "listening on http##{opts[:web_interface].join(':')}"
   rescue Exception => e
